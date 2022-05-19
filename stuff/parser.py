@@ -30,7 +30,7 @@ def format_json_path(column_name: str) -> Tuple[str, str]:
     mid_levels = [f"['{column}']" for column in nested_columns[1:-1]]
     bottom_level = nested_columns[-1]
 
-    json_path = f"{top_level}{''.join(mid_levels)}[{bottom_level}]"
+    json_path = f"{top_level}{''.join(mid_levels)}['{bottom_level}']"
 
     return json_path, bottom_level
 
