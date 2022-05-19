@@ -46,15 +46,15 @@ def create_sql_line(column, datatype) -> str:
     # Handle Mongodb ObjectId datatypes
     if datatype == "ObjectId":
         # `after` is the field containing the Mongodb record
-        sql_line = f"JSON_EXTRACT(after, \"$.{json_path}['$oid']\" AS ObjectId,"
+        sql_line = f"JSON_EXTRACT(after, \"$.{json_path}['$oid']\") AS ObjectId,"
     elif datatype == "Array":
-        sql_line = f"JSON_EXTRACT_ARRAY(after, \"$.{json_path}\" AS {base_name},"
+        sql_line = f"JSON_EXTRACT_ARRAY(after, \"$.{json_path}\") AS {base_name},"
     elif datatype == "Date":
-        sql_line = f"JSON_EXTRACT(after, \"$.{json_path}['$date']\" AS {base_name},"
+        sql_line = f"JSON_EXTRACT(after, \"$.{json_path}['$date']\") AS {base_name},"
     elif datatype == "Object":
         sql_line = ""
     else:
-        sql_line = f"JSON_EXTRACT(after, \"$.{json_path}\" AS {base_name},"
+        sql_line = f"JSON_EXTRACT(after, \"$.{json_path}\") AS {base_name},"
 
     return sql_line
 
